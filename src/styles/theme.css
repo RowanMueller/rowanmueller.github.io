@@ -581,3 +581,38 @@
 .contact-links a {
   font-size: 0.8125rem;
 }
+
+/* Mobile: show only the left navigation bar, hide main content */
+@media (max-width: 860px) {
+  /* hide page content (main + footer) */
+  .app-content {
+    display: none !important;
+  }
+
+  /* make the sidebar fill the viewport (acts as the primary UI on mobile) */
+  .sidebar {
+    position: fixed;
+    inset: 0 0 0 0; /* top right bottom left = 0 */
+    width: 100% !important;
+    min-width: 0 !important;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 60;
+    background: var(--bg-sidebar);
+    border-right: none; /* optional: remove desktop divider */
+  }
+
+  /* ensure header inside sidebar keeps spacing */
+  .sidebar-header {
+    position: sticky;
+    top: 0;
+    z-index: 62;
+    background: inherit;
+  }
+
+  /* keep interactive nav elements above background decorations */
+  .sidebar-nav,
+  .sidebar-list {
+    z-index: 63;
+  }
+}
