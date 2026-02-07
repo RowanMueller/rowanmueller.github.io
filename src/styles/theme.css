@@ -63,6 +63,21 @@
   margin-bottom: 0.5rem;
 }
 
+.project-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
 .project-video {
   width: 100%;
   max-height: 300px;

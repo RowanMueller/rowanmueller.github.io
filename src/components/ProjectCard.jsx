@@ -2,6 +2,13 @@ export default function ProjectCard({ project }) {
   return (
     <article className="project-card">
       <h3>{project.title}</h3>
+      {project.images && project.images.length > 0 && (
+        <div className="project-images">
+          {project.images.map((src, i) => (
+            <img key={i} src={src} alt="" className="project-image" />
+          ))}
+        </div>
+      )}
       {project.video && (
         <video
           src={project.video}

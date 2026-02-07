@@ -16,6 +16,24 @@ PROJECTS = [
         "video": "/assets/videoClips/ProjectOne.mov",
         "link": "https://github.com/RowanMueller/ModelingNavySystems",
     },
+    {
+        "id": "2",
+        "title": "RSI Focused Ortholinear Keyboard",
+        "description": "Constructed an STM32 custom keyboard with firmware in C and QMK with C++ to reduce impact of repetitive strain injuries",
+        "technologies": ["C, C++, Autodesk Fusion, KiCad, QMK, Hardware Design"],
+        "images": [
+            "/assets/videoClips/topAngleProject2.png",
+            "/assets/videoClips/sideAngleProject2.png"
+        ],
+    },
+    {
+        "id": "3",
+        "title": "Solar System Modeling Softare",
+        "description": "Built a MatLab project to simulate the motion of planets and moons in a solar system. Used Eulers Method to solve the differential equations of motion.",
+        "technologies": ["Matlab"],
+        "video": "/assets/videoClips/SolarSystem.mp4",
+    }
+
 ]
 
 
