@@ -1,72 +1,399 @@
-:root {
-  --bg: #0f172a;
-  --text: #f1f5f9;
-  --text-muted: #94a3b8;
-  --accent: #38bdf8;
-  --card-bg: #1e293b;
-  --border: #334155;
+/* === Sidebar (VSCode/Cursor style) === */
+.sidebar {
+  width: 260px;
+  min-width: 260px;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: var(--card-bg);
+.sidebar-header {
+  padding: 0.75rem 1rem;
   border-bottom: 1px solid var(--border);
 }
 
-.nav-brand {
-  font-weight: 700;
-  font-size: 1.25rem;
+.sidebar-title {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.nav-links {
-  display: flex;
+.sidebar-subtitle {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text);
+  margin-top: 0.125rem;
+}
+
+.sidebar-nav {
+  flex: 1;
+  padding: 0.5rem 0;
+  overflow-y: auto;
+}
+
+.sidebar-list {
   list-style: none;
-  gap: 2rem;
 }
 
-.nav-links a.active {
+.sidebar-item {
+  margin: 0;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 1rem;
+  color: var(--text);
+  font-size: 0.8125rem;
+  transition: background 0.1s ease;
+}
+
+.sidebar-link:hover {
+  background: var(--border-subtle);
+  color: var(--text);
+}
+
+.sidebar-link--active {
+  background: var(--selection);
   color: var(--accent);
 }
 
+.sidebar-link-icon {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
+.sidebar-link-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.sidebar-link-chevron {
+  font-size: 0.625rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+/* Sidebar cascading submenu (projects folder) */
+.sidebar-item--folder {
+  position: relative;
+}
+
+.sidebar-link--folder {
+  position: relative;
+}
+
+.sidebar-sublist {
+  list-style: none;
+  margin: 0;
+  padding: 0 0.25rem;
+  background: var(--border-subtle);
+  border-left: 2px solid var(--accent);
+  margin-left: 1rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: max-height 0.4s ease-out, opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.sidebar-sublist--open {
+  max-height: 320px;
+  opacity: 1;
+  transform: translateY(0);
+  padding: 0.25rem 0.25rem 0.25rem 0;
+  pointer-events: auto;
+}
+
+.sidebar-subitem {
+  margin: 0;
+}
+
+.sidebar-sublink {
+  display: block;
+  padding: 0.25rem 1rem 0.25rem 1.5rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  transition: color 0.1s ease, background 0.1s ease;
+}
+
+.sidebar-sublink:hover {
+  color: var(--accent);
+  background: var(--border-subtle);
+}
+
+.sidebar-sublink--active {
+  color: var(--accent);
+}
+
+/* Sidebar recent projects section */
+.sidebar-recent {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.sidebar-recent__title {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-recent__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sidebar-recent__item {
+  margin: 0;
+}
+
+.sidebar-recent__link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  transition: color 0.1s ease;
+  text-decoration: none;
+}
+
+.sidebar-recent__link:hover {
+  color: var(--accent);
+}
+
+.sidebar-recent__link--active {
+  color: var(--accent);
+}
+
+.sidebar-recent__icon {
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+.sidebar-recent__label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+.sidebar-recent__count {
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.sidebar-recent__muted {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* === Welcome page (Cursor/VSCode open page style) === */
+.welcome-page {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: calc(100vh - 120px);
+  padding: 3rem 2rem;
+}
+
+.welcome-content {
+  max-width: 640px;
+  width: 100%;
+}
+
+.welcome-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.welcome-subtitle {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+}
+
+.welcome-section {
+  margin-bottom: 2rem;
+}
+
+.welcome-section__title {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.welcome-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.welcome-action {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--text);
+  border: 1px solid transparent;
+  transition: background 0.1s ease, border-color 0.1s ease, color 0.1s ease;
+}
+
+.welcome-action:hover {
+  background: var(--border-subtle);
+  border-color: var(--border);
+  color: var(--accent);
+}
+
+.welcome-action__icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.welcome-recent {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.welcome-recent li {
+  margin: 0;
+}
+
+.welcome-recent__link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  transition: background 0.1s ease, color 0.1s ease;
+}
+
+.welcome-recent__link:hover {
+  color: var(--accent);
+  background: var(--border-subtle);
+}
+
+.welcome-recent__icon {
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+/* === Project Detail page === */
+.project-detail__header {
+  margin-bottom: 1.5rem;
+}
+
+.project-detail__back {
+  display: inline-block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.project-detail__back:hover {
+  color: var(--accent);
+}
+
+.project-detail__content {
+  max-width: 720px;
+}
+
+.project-detail__description {
+  color: var(--text);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.project-detail__video {
+  max-height: 400px;
+  margin-bottom: 1rem;
+}
+
+.project-detail__media {
+  margin-bottom: 1rem;
+}
+
+/* === Footer (VSCode status bar style) === */
+.footer {
+  padding: 0.25rem 1rem;
+  font-size: 0.75rem;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+/* === Page content === */
 .page {
-  padding: 2rem 0;
+  padding: 1.5rem 0;
 }
 
 .page h1 {
   margin-bottom: 1rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .page .subtitle {
   color: var(--text-muted);
   margin-bottom: 1.5rem;
+  font-size: 0.875rem;
+}
+
+/* === GitHub Activity === */
+.activity-page .github-activity {
+  margin-bottom: 0;
 }
 
 .github-activity {
   margin-bottom: 2rem;
-  padding: 1.5rem;
+  padding: 1rem 1.25rem;
   background: var(--card-bg);
-  border-radius: 8px;
   border: 1px solid var(--border);
 }
 
 .github-activity__title {
-  font-size: 1.25rem;
-  margin-bottom: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
 }
 
 .github-activity__profile {
   display: inline-block;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--accent);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .github-activity__profile:hover {
-  text-decoration: underline;
+  color: var(--accent-hover);
 }
 
 .github-activity__list {
@@ -74,8 +401,8 @@
 }
 
 .github-activity__item {
-  padding: 0.5rem 0;
-  border-bottom: 1px solid var(--border);
+  padding: 0.375rem 0;
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .github-activity__item:last-child {
@@ -86,6 +413,7 @@
   display: block;
   text-decoration: none;
   color: inherit;
+  font-size: 0.8125rem;
 }
 
 .github-activity__link:hover {
@@ -100,96 +428,156 @@
 
 .github-activity__message {
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.8125rem;
 }
 
 .github-activity__date,
 .github-activity__count {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   color: var(--text-muted);
-  margin-top: 0.25rem;
+  margin-top: 0.125rem;
 }
 
 .github-activity__muted {
   color: var(--text-muted);
-  font-size: 0.9rem;
+  font-size: 0.8125rem;
 }
 
+/* === Projects Overview (stack layout, no images/videos) === */
+.projects-overview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projects-overview h1 {
+  margin-bottom: 1.5rem;
+}
+
+.projects-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  max-width: 560px;
+  width: 100%;
+}
+
+.project-stack-item {
+  display: block;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s ease;
+}
+
+.project-stack-item:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.project-stack-item:hover {
+  background: var(--border-subtle);
+  color: var(--accent);
+}
+
+.project-stack-item h3 {
+  margin-bottom: 0.375rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.project-stack-item p {
+  margin-bottom: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.project-stack-item .tech-tags {
+  margin-bottom: 0;
+}
+
+/* === Projects Grid === */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
+/* === Project Cards === */
 .project-card {
-  padding: 1.5rem;
+  padding: 1rem 1.25rem;
   background: var(--card-bg);
-  border-radius: 8px;
   border: 1px solid var(--border);
 }
 
 .project-card h3 {
   margin-bottom: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
 }
 
 .project-images {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .project-image {
   width: 100%;
-  max-width: 300px;
+  max-width: 280px;
   height: auto;
-  border-radius: 8px;
+  border: 1px solid var(--border);
   object-fit: cover;
 }
 
 .project-video {
   width: 100%;
-  max-height: 300px;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  background: #0f172a;
+  max-height: 280px;
+  margin-bottom: 0.75rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
 }
 
 .project-card p {
   color: var(--text-muted);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
 }
 
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  gap: 0.375rem;
+  margin-bottom: 0.75rem;
 }
 
 .tech-tag {
-  font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
-  background: var(--border);
-  border-radius: 4px;
+  font-size: 0.6875rem;
+  padding: 0.125rem 0.375rem;
+  background: var(--border-subtle);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
 }
 
 .project-link {
   display: inline-block;
+  font-size: 0.8125rem;
 }
 
+/* === Contact page === */
 .contact-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
-.footer {
-  padding: 1.5rem 2rem;
-  text-align: center;
-  background: var(--card-bg);
-  border-top: 1px solid var(--border);
-  color: var(--text-muted);
+.contact-links a {
+  font-size: 0.8125rem;
 }

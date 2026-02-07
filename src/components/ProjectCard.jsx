@@ -1,15 +1,15 @@
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, compact }) {
   return (
-    <article className="project-card">
+    <article className={`project-card ${compact ? 'project-card--compact' : ''}`}>
       <h3>{project.title}</h3>
-      {project.images && project.images.length > 0 && (
+      {!compact && project.images && project.images.length > 0 && (
         <div className="project-images">
           {project.images.map((src, i) => (
             <img key={i} src={src} alt="" className="project-image" />
           ))}
         </div>
       )}
-      {project.video && (
+      {!compact && project.video && (
         <video
           src={project.video}
           controls
