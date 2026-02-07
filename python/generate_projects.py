@@ -29,7 +29,7 @@ PROJECTS = [
     {
         "id": "3",
         "title": "Solar System Modeling Softare",
-        "description": "Built a MatLab project to simulate the motion of planets and moons in a solar system. Used Eulers Method to solve the differential equations of motion.",
+        "description": "Built a MatLab project to simulate the motion of planets and moons in a solar system. Tried multiple methods including Eulers Method and ODE45 to solve the differential equations of motion.",
         "technologies": ["Matlab"],
         "video": "/assets/videoClips/SolarSystem.mp4",
     }

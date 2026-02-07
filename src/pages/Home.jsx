@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <section className="welcome-page">
       <div className="welcome-content">
-        <h1 className="welcome-title">Welcome</h1>
+        <h1 className="welcome-title">Welcome!</h1>
         <p className="welcome-subtitle">Rowan Mueller · B.S. Computer Engineering</p>
 
         <div className="welcome-section">
