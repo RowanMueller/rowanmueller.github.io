@@ -1,4 +1,5 @@
 import ProjectCard from '../components/ProjectCard'
+import GitHubActivity from '../components/GitHubActivity'
 import projectsData from '../data/projects.json'
 
 export default function Projects() {
@@ -11,10 +12,11 @@ export default function Projects() {
         {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
-        {projects.length === 0 && (
-          <p>No projects yet. Add projects to <code>src/data/projects.json</code> or run the Python generator.</p>
+        {projects.length === 3 && (
+          <p>3 projects in total</p>
         )}
       </div>
+      <GitHubActivity />
     </section>
   )
 }
