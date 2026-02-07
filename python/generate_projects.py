@@ -7,14 +7,14 @@ Run from project root: python python/generate_projects.py
 import json
 from pathlib import Path
 
-# Example projects - customize as needed
 PROJECTS = [
     {
         "id": "1",
-        "title": "Sample Project",
-        "description": "A sample project description.",
-        "technologies": ["React", "Vite"],
-        "link": "https://github.com/rowanmueller",
+        "title": "System Modeling Application for IoT",
+        "description": "Web app for modeling navy systems: create systems, upload SysML/CSV data, visualize as graphs, and export to SysML. Built with Django (backend), React (frontend), and PostgreSQL.",
+        "technologies": ["Django, React, Node.js, PostgreSQL"],
+        "video": "/assets/videoClips/ProjectOne.mov",
+        "link": "https://github.com/RowanMueller/ModelingNavySystems",
     },
 ]
 
