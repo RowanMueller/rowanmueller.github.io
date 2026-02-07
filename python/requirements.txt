@@ -1,0 +1,2 @@
+# No external dependencies required for generate_projects.py
+# Python 3.6+ standard library is sufficient

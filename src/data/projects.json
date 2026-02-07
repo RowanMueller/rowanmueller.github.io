@@ -1,0 +1,11 @@
+{
+  "projects": [
+    {
+      "id": "1",
+      "title": "Sample Project",
+      "description": "A sample project description. Add your projects here or use the Python generator.",
+      "technologies": ["React", "Vite"],
+      "link": "https://github.com/rowanmueller"
+    }
+  ]
+}
