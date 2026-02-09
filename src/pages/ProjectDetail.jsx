@@ -30,9 +30,20 @@ export default function ProjectDetail() {
             ))}
           </div>
         )}
-        {project.video && (
+        {project.videos && project.videos.length > 0 && project.videos.map((src, i) => (
           <video
-            src={project.video}
+            key={i}
+            src={encodeURI(src)}
+            controls
+            playsInline
+            className="project-video project-detail__video"
+          >
+            Your browser does not support the video tag.
+          </video>
+        ))}
+        {!project.videos && project.video && (
+          <video
+            src={encodeURI(project.video)}
             controls
             playsInline
             className="project-video project-detail__video"
