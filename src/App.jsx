@@ -1,5 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
-import { useState } from 'react'
+import { Routes, Route, useLocation, Link } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -11,28 +10,28 @@ import Contact from './pages/Contact'
 function App() {
   const location = useLocation()
   const isHome = location.pathname === '/'
-  const [sidebarOpen, setSidebarOpen] = useState(false)
+
+  const getPageTitle = () => {
+    if (location.pathname === '/projects') return 'Projects'
+    if (location.pathname.startsWith('/projects/')) return 'Project'
+    if (location.pathname === '/about') return 'About'
+    if (location.pathname === '/contact') return 'Contact'
+    return 'rowanmueller.github.io'
+  }
 
   return (
-    <div
-      className={`app-layout ${isHome ? 'route-home' : 'route-content'} ${sidebarOpen ? 'sidebar-open' : ''}`}
-    >
-      <Navbar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-      {!isHome && (
-        <header className="mobile-header">
-          <button
-            type="button"
-            className="mobile-header__hamburger"
-            onClick={() => setSidebarOpen(true)}
-            aria-label="Open menu"
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-          <span className="mobile-header__title">rowanmueller.github.io</span>
-        </header>
-      )}
+    <div className={`app-layout ${isHome ? 'route-home' : 'route-content'}`}>
+      <header className="mobile-header">
+        {!isHome ? (
+          <Link to="/" className="mobile-header__back" aria-label="Return to home">
+            ←
+          </Link>
+        ) : (
+          <span className="mobile-header__spacer" aria-hidden="true" />
+        )}
+        <span className="mobile-header__title">{getPageTitle()}</span>
+      </header>
+      <Navbar />
       <div className="app-content">
         <main>
           <Routes>

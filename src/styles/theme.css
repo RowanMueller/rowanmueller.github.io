@@ -587,123 +587,98 @@
   display: none;
 }
 
-/* Mobile: route-based layout */
+/* Mobile: single nav bar + full-screen content */
 @media (max-width: 860px) {
-  /* Home route: sidebar full-screen, hide content */
-  .app-layout.route-home .app-content {
+  /* Hide sidebar completely on mobile */
+  .sidebar {
     display: none !important;
   }
 
-  .app-layout.route-home .mobile-header {
-    display: none !important;
-  }
-
-  .app-layout.route-home .sidebar {
-    position: fixed;
-    inset: 0;
-    width: 100% !important;
-    min-width: 0 !important;
-    height: 100vh;
-    overflow-y: auto;
-    z-index: 60;
-    background: var(--bg-sidebar);
-    border-right: none;
-  }
-
-  /* Content routes: content full-screen, sidebar off-screen by default */
-  .app-layout.route-content .app-content {
-    display: flex !important;
-    flex: 1;
+  /* App layout: column with nav bar on top */
+  .app-layout {
     flex-direction: column;
-    width: 100%;
-    min-width: 0;
   }
 
-  .app-layout.route-content .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 280px;
-    max-width: 85vw;
-    height: 100vh;
-    z-index: 70;
-    background: var(--bg-sidebar);
-    border-right: 1px solid var(--border);
-    overflow-y: auto;
-    transform: translateX(-100%);
-    transition: transform 0.2s ease-out;
-  }
-
-  .app-layout.route-content.sidebar-open .sidebar {
-    transform: translateX(0);
-  }
-
-  .sidebar-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 65;
-    background: rgba(0, 0, 0, 0.5);
-    border: none;
-    cursor: pointer;
-  }
-
-  .sidebar-close {
-    position: absolute;
-    top: 0.75rem;
-    right: 1rem;
-    padding: 0.25rem;
-    font-size: 1.5rem;
-    line-height: 1;
-    color: var(--text-muted);
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  .sidebar-close:hover {
-    color: var(--text);
-  }
-
-  .sidebar-header {
-    position: sticky;
-    top: 0;
-    z-index: 62;
-    background: inherit;
-    padding-right: 2.5rem;
-  }
-
-  /* Mobile header (shown only on content routes via App.jsx) */
-  .app-layout.route-content .mobile-header {
-    display: flex;
+  /* Mobile header: always visible */
+  .mobile-header {
+    display: flex !important;
     align-items: center;
+    justify-content: space-between;
     gap: 1rem;
     padding: 0.75rem 1rem;
     background: var(--bg-elevated);
     border-bottom: 1px solid var(--border);
     flex-shrink: 0;
+    min-height: 48px;
   }
 
-  .mobile-header__hamburger {
+  .mobile-header__back {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 4px;
+    align-items: center;
     padding: 0.5rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--text);
+    font-size: 1.25rem;
+    color: var(--accent);
+    text-decoration: none;
   }
 
-  .mobile-header__hamburger span {
+  .mobile-header__back:hover {
+    color: var(--accent-hover);
+  }
+
+  .mobile-header__spacer {
     display: block;
-    width: 20px;
-    height: 2px;
-    background: currentColor;
+    width: 2.5rem;
   }
 
   .mobile-header__title {
-    font-size: 0.8125rem;
-    color: var(--text-muted);
+    flex: 1;
+    font-size: 0.875rem;
+    color: var(--text);
+    text-align: center;
+  }
+
+  /* Content: full-screen below nav bar */
+  .app-content {
+    flex: 1;
+    display: flex !important;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    overflow-y: auto;
+  }
+
+  main {
+    flex: 1;
+    padding: 1rem;
+    max-width: none;
+    width: 100%;
+  }
+
+  .footer {
+    flex-shrink: 0;
+  }
+
+  /* Welcome page: compact padding on mobile */
+  .welcome-page {
+    padding: 1.5rem 1rem;
+  }
+
+  .welcome-title {
+    font-size: 1.75rem;
+  }
+
+  /* Projects overview: full width */
+  .projects-stack {
+    max-width: none;
+  }
+
+  /* Project cards / detail: full width */
+  .project-detail__content {
+    max-width: none;
+  }
+
+  .project-card,
+  .github-activity {
+    max-width: none;
   }
 }
