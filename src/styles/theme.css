@@ -582,37 +582,128 @@
   font-size: 0.8125rem;
 }
 
-/* Mobile: show only the left navigation bar, hide main content */
+/* Mobile header: hidden on desktop */
+.mobile-header {
+  display: none;
+}
+
+/* Mobile: route-based layout */
 @media (max-width: 860px) {
-  /* hide page content (main + footer) */
-  .app-content {
+  /* Home route: sidebar full-screen, hide content */
+  .app-layout.route-home .app-content {
     display: none !important;
   }
 
-  /* make the sidebar fill the viewport (acts as the primary UI on mobile) */
-  .sidebar {
+  .app-layout.route-home .mobile-header {
+    display: none !important;
+  }
+
+  .app-layout.route-home .sidebar {
     position: fixed;
-    inset: 0 0 0 0; /* top right bottom left = 0 */
+    inset: 0;
     width: 100% !important;
     min-width: 0 !important;
     height: 100vh;
     overflow-y: auto;
     z-index: 60;
     background: var(--bg-sidebar);
-    border-right: none; /* optional: remove desktop divider */
+    border-right: none;
   }
 
-  /* ensure header inside sidebar keeps spacing */
+  /* Content routes: content full-screen, sidebar off-screen by default */
+  .app-layout.route-content .app-content {
+    display: flex !important;
+    flex: 1;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .app-layout.route-content .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    max-width: 85vw;
+    height: 100vh;
+    z-index: 70;
+    background: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform 0.2s ease-out;
+  }
+
+  .app-layout.route-content.sidebar-open .sidebar {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 65;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    cursor: pointer;
+  }
+
+  .sidebar-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    padding: 0.25rem;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .sidebar-close:hover {
+    color: var(--text);
+  }
+
   .sidebar-header {
     position: sticky;
     top: 0;
     z-index: 62;
     background: inherit;
+    padding-right: 2.5rem;
   }
 
-  /* keep interactive nav elements above background decorations */
-  .sidebar-nav,
-  .sidebar-list {
-    z-index: 63;
+  /* Mobile header (shown only on content routes via App.jsx) */
+  .app-layout.route-content .mobile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .mobile-header__hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text);
+  }
+
+  .mobile-header__hamburger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: currentColor;
+  }
+
+  .mobile-header__title {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
   }
 }
