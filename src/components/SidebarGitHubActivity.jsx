@@ -39,7 +39,7 @@ export default function SidebarGitHubActivity() {
         )
         if (!eventsRes.ok) {
           const fallback = await fetchFromRepos()
-          setRepos(fallback.slice(0, 2))
+          setRepos(fallback.slice(0, 4))
           return
         }
         const events = await eventsRes.json()
@@ -62,10 +62,10 @@ export default function SidebarGitHubActivity() {
           repoList = await fetchFromRepos()
         }
 
-        setRepos(repoList.slice(0, 2))
+        setRepos(repoList.slice(0, 4))
       } catch {
         const fallback = await fetchFromRepos()
-        setRepos(fallback.slice(0, 2))
+        setRepos(fallback.slice(0, 4))
       } finally {
         setLoading(false)
       }
