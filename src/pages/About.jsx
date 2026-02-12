@@ -4,8 +4,17 @@ export default function About() {
   return (
     <section className="welcome-page">
       <div className="welcome-content">
-        <h1 className="welcome-title">About</h1>
-        <p className="welcome-subtitle">Rowan Mueller · B.S. Computer Engineering</p>
+        <div className="about-header">
+          <img
+            src="/assets/videoClips/ProfilePicture.png"
+            alt="Rowan Mueller"
+            className="about-profile-img"
+          />
+          <div>
+            <h1 className="welcome-title">About</h1>
+            <p className="welcome-subtitle">Rowan Mueller · B.S. Computer Engineering</p>
+          </div>
+        </div>
 
         <div className="welcome-section">
           <h2 className="welcome-section__title">Summary</h2>

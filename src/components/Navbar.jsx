@@ -1,18 +1,47 @@
 import { Link, useLocation } from 'react-router-dom'
 import projectsData from '../data/projects.json'
 import SidebarGitHubActivity from './SidebarGitHubActivity'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
+
+const DROPDOWN_CLOSE_DELAY = 600
 
 export default function Navbar() {
   const location = useLocation()
   const projects = projectsData.projects || []
   const [projectsHovered, setProjectsHovered] = useState(false)
+  const closeTimeoutRef = useRef(null)
 
   const isProjectsActive = location.pathname === '/projects' || location.pathname.startsWith('/projects/')
 
   const handleFolderToggle = () => {
     setProjectsHovered((prev) => !prev)
   }
+
+  const handleProjectsMouseEnter = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current)
+      closeTimeoutRef.current = null
+    }
+    setProjectsHovered(true)
+  }
+
+  const handleProjectsMouseLeave = () => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setProjectsHovered(false)
+      closeTimeoutRef.current = null
+    }, DROPDOWN_CLOSE_DELAY)
+  }
+
+  const cancelCloseTimeout = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current)
+      closeTimeoutRef.current = null
+    }
+  }
+
+  useEffect(() => {
+    setProjectsHovered(false)
+  }, [location.pathname])
 
   return (
     <aside className="sidebar">
@@ -34,8 +63,8 @@ export default function Navbar() {
 
           <li
             className="sidebar-item sidebar-item--folder"
-            onMouseEnter={() => setProjectsHovered(true)}
-            onMouseLeave={() => setProjectsHovered(false)}
+            onMouseEnter={handleProjectsMouseEnter}
+            onMouseLeave={handleProjectsMouseLeave}
           >
             <Link
               to="/projects"
@@ -73,7 +102,10 @@ export default function Navbar() {
               </ul>
           </li>
 
-          <li className="sidebar-item">
+          <li
+            className="sidebar-item"
+            onMouseEnter={cancelCloseTimeout}
+          >
             <Link
               to="/about"
               className={`sidebar-link ${location.pathname === '/about' ? 'sidebar-link--active' : ''}`}
@@ -83,7 +115,10 @@ export default function Navbar() {
             </Link>
           </li>
 
-          <li className="sidebar-item">
+          <li
+            className="sidebar-item"
+            onMouseEnter={cancelCloseTimeout}
+          >
             <Link
               to="/contact"
               className={`sidebar-link ${location.pathname === '/contact' ? 'sidebar-link--active' : ''}`}
