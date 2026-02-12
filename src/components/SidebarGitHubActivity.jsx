@@ -104,8 +104,7 @@ export default function SidebarGitHubActivity() {
               rel="noopener noreferrer"
               className="sidebar-recent__link"
             >
-              <span className="sidebar-recent__icon">📊</span>
-              <span className="sidebar-recent__label">{item.repo}</span>
+              <span className="sidebar-recent__label">{item.repo.split('/').pop().toLowerCase()}</span>
               <span className="sidebar-recent__count">{item.count} commit{item.count !== 1 ? 's' : ''}</span>
             </a>
           </li>
