@@ -263,6 +263,33 @@
   margin-bottom: 0.25rem;
 }
 
+.welcome-title--interactive {
+  display: flex;
+  gap: 0;
+  cursor: default;
+}
+
+.welcome-title__char {
+  display: inline-block;
+  transition: transform 0.1s ease;
+}
+
+.welcome-title__char--jump {
+  animation: welcome-char-jump 0.35s ease-out;
+}
+
+@keyframes welcome-char-jump {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.4em);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 .welcome-subtitle {
   font-size: 0.9375rem;
   color: var(--text-muted);
