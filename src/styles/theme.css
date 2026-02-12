@@ -140,7 +140,7 @@
 .sidebar-recent {
   padding: 1.25rem 1rem;
   border-top: 1px solid var(--border);
-  flex: 1;
+  flex: 0 0 37.5vh;
   min-height: 0;
   display: flex;
   flex-direction: column;
@@ -156,6 +156,13 @@
   margin-bottom: 1rem;
 }
 
+.sidebar-recent__scroll-wrapper {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
 .sidebar-recent__list {
   list-style: none;
   margin: 0;
@@ -166,13 +173,20 @@
   justify-content: space-evenly;
 }
 
+.sidebar-recent__list--scroll {
+  flex: none;
+  justify-content: flex-start;
+  animation: sidebar-recent-scroll 12s linear infinite;
+  will-change: transform;
+}
+
 .sidebar-recent__item {
   margin: 0;
 }
 
 .sidebar-recent__link {
   display: block;
-  padding: 0.75rem 0;
+  padding: 1.125rem 0;
   color: inherit;
   transition: color 0.1s ease;
   text-decoration: none;
@@ -184,7 +198,7 @@
 
 .sidebar-recent__label {
   display: block;
-  font-size: 1rem;
+  font-size: 1.25rem;
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
@@ -193,7 +207,7 @@
 
 .sidebar-recent__count {
   display: block;
-  font-size: 0.875rem;
+  font-size: 1.0625rem;
   color: var(--text-muted);
   padding-left: 1rem;
   margin-top: 0.25rem;
@@ -202,6 +216,15 @@
 .sidebar-recent__muted {
   font-size: 0.9375rem;
   color: var(--text-muted);
+}
+
+@keyframes sidebar-recent-scroll {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
 }
 
 /* === Welcome page (Cursor/VSCode open page style) === */

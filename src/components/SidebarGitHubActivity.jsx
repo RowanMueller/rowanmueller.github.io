@@ -92,24 +92,28 @@ export default function SidebarGitHubActivity() {
     )
   }
 
+  const duplicatedRepos = [...repos, ...repos]
+
   return (
     <div className="sidebar-recent">
       <span className="sidebar-recent__title">Recent Activity</span>
-      <ul className="sidebar-recent__list">
-        {repos.map((item) => (
-          <li key={item.repo} className="sidebar-recent__item">
-            <a
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sidebar-recent__link"
-            >
-              <span className="sidebar-recent__label">{item.repo.split('/').pop().toLowerCase()}</span>
-              <span className="sidebar-recent__count">{item.count} commit{item.count !== 1 ? 's' : ''}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div className="sidebar-recent__scroll-wrapper">
+        <ul className="sidebar-recent__list sidebar-recent__list--scroll">
+          {duplicatedRepos.map((item, idx) => (
+            <li key={`${item.repo}-${idx}`} className="sidebar-recent__item">
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sidebar-recent__link"
+              >
+                <span className="sidebar-recent__label">{item.repo.split('/').pop().toLowerCase()}</span>
+                <span className="sidebar-recent__count">{item.count} commit{item.count !== 1 ? 's' : ''}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   )
 }
