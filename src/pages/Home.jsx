@@ -79,6 +79,10 @@ export default function Home() {
               <span className="welcome-action__icon"><PixelIcon name="flask" /></span>
               <span>Research</span>
             </Link>
+            <Link to="/study" className="welcome-action">
+              <span className="welcome-action__icon"><PixelIcon name="sprout" /></span>
+              <span>Study with me</span>
+            </Link>
             <Link to="/about" className="welcome-action">
               <span className="welcome-action__icon"><PixelIcon name="scroll" /></span>
               <span>About</span>
