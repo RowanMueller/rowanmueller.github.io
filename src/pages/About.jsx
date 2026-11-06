@@ -31,7 +31,7 @@ export default function About() {
 
         <div className="welcome-section">
           <h2 className="welcome-section__title">Skills</h2>
-          <div className="welcome-actions" style={{ flexDirection: 'row', flexWrap: 'wrap', gap: '0.5rem' }}>
+          <div className="skill-chips">
             <span className="welcome-action">HTML</span>
             <span className="welcome-action">CSS</span>
             <span className="welcome-action">SQL</span>

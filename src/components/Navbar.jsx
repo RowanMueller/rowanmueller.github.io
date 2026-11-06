@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import projectsData from '../data/projects.json'
 import SidebarGitHubActivity from './SidebarGitHubActivity'
 import { useState, useRef, useEffect } from 'react'
+import PixelIcon from './PixelIcon'
 
 const DROPDOWN_CLOSE_DELAY = 600
 
@@ -46,7 +47,7 @@ export default function Navbar() {
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
-        <span className="sidebar-title">ROOT</span>
+        <span className="sidebar-title"><PixelIcon name="sprout" size={12} />ROOT</span>
           <span className="sidebar-subtitle">rowanmueller.github.io</span>
         </div>
       <nav className="sidebar-nav">
@@ -56,7 +57,7 @@ export default function Navbar() {
               to="/"
               className={`sidebar-link ${location.pathname === '/' ? 'sidebar-link--active' : ''}`}
             >
-              <span className="sidebar-link-icon">📄</span>
+              <span className="sidebar-link-icon"><PixelIcon name="leaf" /></span>
               <span className="sidebar-link-label">index.html</span>
             </Link>
           </li>
@@ -76,7 +77,7 @@ export default function Navbar() {
                 }
               }}
             >
-              <span className="sidebar-link-icon">📁</span>
+              <span className="sidebar-link-icon"><PixelIcon name="folder" /></span>
               <span className="sidebar-link-label">projects</span>
               <span className="sidebar-link-chevron">{projectsHovered ? '▼' : '▶'}</span>
             </Link>
@@ -110,7 +111,7 @@ export default function Navbar() {
               to="/about"
               className={`sidebar-link ${location.pathname === '/about' ? 'sidebar-link--active' : ''}`}
             >
-              <span className="sidebar-link-icon">📄</span>
+              <span className="sidebar-link-icon"><PixelIcon name="scroll" /></span>
               <span className="sidebar-link-label">about.md</span>
             </Link>
           </li>
@@ -123,7 +124,7 @@ export default function Navbar() {
               to="/contact"
               className={`sidebar-link ${location.pathname === '/contact' ? 'sidebar-link--active' : ''}`}
             >
-              <span className="sidebar-link-icon">📄</span>
+              <span className="sidebar-link-icon"><PixelIcon name="letter" /></span>
               <span className="sidebar-link-label">contact.json</span>
             </Link>
           </li>

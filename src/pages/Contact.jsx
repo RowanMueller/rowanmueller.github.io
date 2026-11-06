@@ -1,3 +1,5 @@
+import PixelIcon from '../components/PixelIcon'
+
 export default function Contact() {
   return (
     <section className="welcome-page">
@@ -9,7 +11,7 @@ export default function Contact() {
           <h2 className="welcome-section__title">Contact Me</h2>
           <p className="welcome-section__text">
             <a href="mailto:bzz2nh@virginia.edu">bzz2nh@virginia.edu</a>
-            <p></p>
+            <br />
             <a href="mailto:RowanMuelle@gmail.com">RowanMuelle@gmail.com</a>
           </p>  
         </div>
@@ -19,13 +21,13 @@ export default function Contact() {
           <ul className="welcome-recent">
             <li>
               <a className="welcome-recent__link" href="https://github.com/rowanmueller" target="_blank" rel="noreferrer">
-                <span className="welcome-recent__icon">🔗</span>
+                <span className="welcome-recent__icon"><PixelIcon name="link" size={14} /></span>
                 <span>GitHub</span>
               </a>
             </li>
             <li>
               <a className="welcome-recent__link" href="https://www.linkedin.com/in/rowan-mueller-a01a21285/" target="_blank" rel="noreferrer">
-                <span className="welcome-recent__icon">🔗</span>
+                <span className="welcome-recent__icon"><PixelIcon name="link" size={14} /></span>
                 <span>LinkedIn</span>
               </a>
             </li>
