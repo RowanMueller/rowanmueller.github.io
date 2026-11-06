@@ -108,6 +108,19 @@ export default function Navbar() {
             onMouseEnter={cancelCloseTimeout}
           >
             <Link
+              to="/research"
+              className={`sidebar-link ${location.pathname === '/research' ? 'sidebar-link--active' : ''}`}
+            >
+              <span className="sidebar-link-icon"><PixelIcon name="flask" /></span>
+              <span className="sidebar-link-label">research.bib</span>
+            </Link>
+          </li>
+
+          <li
+            className="sidebar-item"
+            onMouseEnter={cancelCloseTimeout}
+          >
+            <Link
               to="/about"
               className={`sidebar-link ${location.pathname === '/about' ? 'sidebar-link--active' : ''}`}
             >

@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import projectsData from '../data/projects.json'
+import PixelFrame, { mediaLabel } from '../components/PixelFrame'
 
 export default function ProjectDetail() {
   const { id } = useParams()
@@ -26,30 +27,37 @@ export default function ProjectDetail() {
         {project.images && project.images.length > 0 && (
           <div className="project-detail__media project-images">
             {project.images.map((src, i) => (
-              <img key={i} src={src} alt="" className="project-image" />
+              <PixelFrame key={i} label={mediaLabel(project, 'images', i)} icon="photo">
+                <img src={src} alt={`${project.title} photo ${i + 1}`} className="project-image" />
+              </PixelFrame>
             ))}
           </div>
         )}
         {project.videos && project.videos.length > 0 && project.videos.map((src, i) => (
-          <video
-            key={i}
-            src={encodeURI(src)}
-            controls
-            playsInline
-            className="project-video project-detail__video"
-          >
-            Your browser does not support the video tag.
-          </video>
+          <PixelFrame key={i} label={mediaLabel(project, 'videos', i)} icon="play" className="project-detail__video-frame">
+            <video
+              src={encodeURI(src)}
+              controls
+              playsInline
+              preload="metadata"
+              className="project-video project-detail__video"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </PixelFrame>
         ))}
         {!project.videos && project.video && (
-          <video
-            src={encodeURI(project.video)}
-            controls
-            playsInline
-            className="project-video project-detail__video"
-          >
-            Your browser does not support the video tag.
-          </video>
+          <PixelFrame label={mediaLabel(project, 'videos', 0)} icon="play" className="project-detail__video-frame">
+            <video
+              src={encodeURI(project.video)}
+              controls
+              playsInline
+              preload="metadata"
+              className="project-video project-detail__video"
+            >
+              Your browser does not support the video tag.
+            </video>
+          </PixelFrame>
         )}
 
         <p className="project-detail__description">{project.description}</p>

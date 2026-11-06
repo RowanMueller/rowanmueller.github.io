@@ -1,3 +1,5 @@
+import PixelFrame, { mediaLabel } from './PixelFrame'
+
 export default function ProjectCard({ project, compact }) {
   return (
     <article className={`project-card ${compact ? 'project-card--compact' : ''}`}>
@@ -5,19 +7,24 @@ export default function ProjectCard({ project, compact }) {
       {!compact && project.images && project.images.length > 0 && (
         <div className="project-images">
           {project.images.map((src, i) => (
-            <img key={i} src={src} alt="" className="project-image" />
+            <PixelFrame key={i} label={mediaLabel(project, 'images', i)} icon="photo">
+              <img src={src} alt="" className="project-image" />
+            </PixelFrame>
           ))}
         </div>
       )}
       {!compact && project.video && (
-        <video
-          src={project.video}
-          controls
-          playsInline
-          className="project-video"
-        >
-          Your browser does not support the video tag.
-        </video>
+        <PixelFrame label={mediaLabel(project, 'videos', 0)} icon="play">
+          <video
+            src={encodeURI(project.video)}
+            controls
+            playsInline
+            preload="metadata"
+            className="project-video"
+          >
+            Your browser does not support the video tag.
+          </video>
+        </PixelFrame>
       )}
       <p>{project.description}</p>
       {project.technologies && (
