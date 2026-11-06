@@ -1,6 +1,44 @@
 {
   "projects": [
     {
+      "id": "4",
+      "title": "HoosThere: AI Crisis Line Agent",
+      "description": "An AI voice agent that answers crisis-line calls that would otherwise go unanswered, plus a dashboard for human counselors to review transcripts, AI-extracted notes, severity, and repeat-caller history. I built the speech signal-processing algorithm that detects energy peaks to locate words in call audio (driving the synced transcript and waveform), ran sentiment analysis on calls with Snowflake, and developed the AI voice agent models.",
+      "technologies": [
+        "Next.js, React, TypeScript, Prisma, PostgreSQL, ElevenLabs, Gemini, Snowflake, Signal Processing"
+      ],
+      "imageFit": "natural",
+      "images": [
+        {
+          "src": "/assets/images/hoosthere/dashboard.jpg",
+          "wide": true,
+          "alt": "Counselor dashboard listing calls with severity and notes"
+        },
+        {
+          "src": "/assets/images/hoosthere/call-transcript.jpg",
+          "wide": true,
+          "alt": "Call detail page with severity score and transcript"
+        },
+        {
+          "src": "/assets/images/hoosthere/ai-notes.jpg",
+          "alt": "AI-extracted notes for a call"
+        },
+        {
+          "src": "/assets/images/hoosthere/caller-notes.jpg",
+          "alt": "Aggregated notes across a caller's history"
+        }
+      ],
+      "captions": {
+        "images": [
+          "dashboard.png",
+          "call_transcript.png",
+          "ai_notes.png",
+          "caller_history.png"
+        ]
+      },
+      "link": "https://github.com/YuDavidCao/hotline-agent"
+    },
+    {
       "id": "1",
       "title": "System Modeling Application for IoT",
       "description": "Web app for modeling navy systems: create systems, upload SysML/CSV data, visualize as graphs, and export to SysML. Built with Django (backend), React (frontend), and PostgreSQL.",

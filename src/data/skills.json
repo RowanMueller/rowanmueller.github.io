@@ -2,23 +2,98 @@
   "groups": [
     {
       "name": "Languages",
-      "items": ["Python", "Java", "C", "C++", "Go", "SQL", "JavaScript", "TypeScript", "R", "MATLAB", "x86 Assembly", "HTML", "CSS"]
+      "items": [
+        "Python",
+        "Java",
+        "C",
+        "C++",
+        "Go",
+        "SQL",
+        "JavaScript",
+        "TypeScript",
+        "R",
+        "MATLAB",
+        "x86 Assembly",
+        "HTML",
+        "CSS"
+      ]
     },
     {
       "name": "Frameworks & Tools",
-      "items": ["React", "Django", "Node.js", "Express", "Qt", "PostgreSQL", "Firebase", "Neo4j", "Docker", "Kubernetes", "Git", "Linux", "Make", "GCC", "JUnit", "Gradle"]
+      "items": [
+        "React",
+        "Next.js",
+        "Prisma",
+        "Tailwind CSS",
+        "shadcn/ui",
+        "Auth.js",
+        "Django",
+        "Node.js",
+        "Express",
+        "Qt",
+        "PostgreSQL",
+        "Firebase",
+        "Neo4j",
+        "Snowflake",
+        "Docker",
+        "Kubernetes",
+        "Git",
+        "Linux",
+        "Make",
+        "GCC",
+        "JUnit",
+        "Gradle"
+      ]
     },
     {
       "name": "Data & AI",
-      "items": ["LLM Fine-Tuning (Llama)", "Text-to-SQL", "NLP", "FastMCP / MCP", "Keyword Spotting", "Edge AI", "Edge Impulse", "Keras", "INT8 Quantization", "Audio DSP (MFCC)", "Monte Carlo Simulation", "Regression & Time-Series", "Pandas", "NumPy"]
+      "items": [
+        "LLM Fine-Tuning (Llama)",
+        "Text-to-SQL",
+        "NLP",
+        "FastMCP / MCP",
+        "AI Voice Agents (ElevenLabs)",
+        "Gemini",
+        "Prompt Engineering",
+        "Sentiment Analysis",
+        "Keyword Spotting",
+        "Edge AI",
+        "Edge Impulse",
+        "Keras",
+        "INT8 Quantization",
+        "Audio DSP (MFCC)",
+        "Speech Energy Detection",
+        "Monte Carlo Simulation",
+        "Regression & Time-Series",
+        "Pandas",
+        "NumPy"
+      ]
     },
     {
       "name": "Hardware & Embedded",
-      "items": ["Embedded C", "ARM Cortex-M", "STM32", "PWM & Timers", "Interrupt Handling", "Oscilloscopes", "KiCad", "KLayout", "Code Composer Studio", "Autodesk Fusion"]
+      "items": [
+        "Embedded C",
+        "ARM Cortex-M",
+        "STM32",
+        "PWM & Timers",
+        "Interrupt Handling",
+        "Oscilloscopes",
+        "KiCad",
+        "KLayout",
+        "Code Composer Studio",
+        "Autodesk Fusion"
+      ]
     },
     {
       "name": "Fabrication",
-      "items": ["Semiconductor Fabrication", "Lithography", "Sputtering", "E-Beam Deposition", "Etching", "Nanocharacterization"]
+      "items": [
+        "Semiconductor Fabrication",
+        "Lithography",
+        "Sputtering",
+        "E-Beam Deposition",
+        "Etching",
+        "Nanocharacterization"
+      ]
     }
   ]
 }
