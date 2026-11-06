@@ -117,7 +117,7 @@
 .study-btn:focus-visible,
 .study-play:focus-visible,
 .study-channel__toggle:focus-visible,
-.study-card input[type='range']:focus-visible {
+:is(.study-card, .sidebar-player) input[type='range']:focus-visible {
   outline: 2px dashed var(--accent);
   outline-offset: 2px;
 }
@@ -248,7 +248,7 @@
 }
 
 /* Pixel range sliders */
-.study-card input[type='range'] {
+:is(.study-card, .sidebar-player) input[type='range'] {
   -webkit-appearance: none;
   appearance: none;
   height: 16px;
@@ -256,19 +256,19 @@
   cursor: pointer;
 }
 
-.study-card input[type='range']::-webkit-slider-runnable-track {
+:is(.study-card, .sidebar-player) input[type='range']::-webkit-slider-runnable-track {
   height: 6px;
   background: var(--border-dark);
   border: 2px solid var(--moss);
 }
 
-.study-card input[type='range']::-moz-range-track {
+:is(.study-card, .sidebar-player) input[type='range']::-moz-range-track {
   height: 6px;
   background: var(--border-dark);
   border: 2px solid var(--moss);
 }
 
-.study-card input[type='range']::-webkit-slider-thumb {
+:is(.study-card, .sidebar-player) input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 12px;
   height: 16px;
@@ -278,7 +278,7 @@
   border-radius: 0;
 }
 
-.study-card input[type='range']::-moz-range-thumb {
+:is(.study-card, .sidebar-player) input[type='range']::-moz-range-thumb {
   width: 10px;
   height: 14px;
   background: var(--accent);
@@ -354,5 +354,145 @@
 @media (prefers-reduced-motion: reduce) {
   .study-play--on {
     animation: none;
+  }
+}
+
+/* === Sidebar player (bottom of the sidebar) === */
+.sidebar-player {
+  margin-top: auto;
+  padding: 0.9rem 1rem 1rem;
+  border-top: var(--px) dashed var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.sidebar-player__title {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--leaf);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.sidebar-player__row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sidebar-player__btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  background: var(--moss);
+  border: var(--px) solid var(--leaf);
+  box-shadow: var(--px) var(--px) 0 0 var(--border-dark);
+  cursor: pointer;
+}
+
+.sidebar-player__btn:hover {
+  border-color: var(--accent);
+}
+
+.sidebar-player__btn:active {
+  transform: translate(var(--px), var(--px));
+  box-shadow: none;
+}
+
+.sidebar-player__btn:focus-visible,
+.sidebar-player__link:focus-visible {
+  outline: 2px dashed var(--accent);
+  outline-offset: 2px;
+}
+
+.sidebar-player--on .sidebar-player__btn {
+  background: #24502d;
+}
+
+.sidebar-player__meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.sidebar-player__name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.sidebar-player--on .sidebar-player__name {
+  color: var(--accent);
+}
+
+.sidebar-player__mix {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* little pixel equalizer that only moves while playing */
+.sidebar-player__eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.sidebar-player__eq i {
+  display: block;
+  width: 3px;
+  height: 3px;
+  background: var(--moss);
+}
+
+.sidebar-player--on .sidebar-player__eq i {
+  background: var(--accent);
+  animation: sidebar-eq 0.9s steps(3) infinite alternate;
+}
+
+.sidebar-player--on .sidebar-player__eq i:nth-child(2) { animation-duration: 0.7s; animation-delay: -0.3s; }
+.sidebar-player--on .sidebar-player__eq i:nth-child(3) { animation-duration: 1.1s; animation-delay: -0.6s; }
+.sidebar-player--on .sidebar-player__eq i:nth-child(4) { animation-duration: 0.8s; animation-delay: -0.2s; }
+
+@keyframes sidebar-eq {
+  from { height: 3px; }
+  to { height: 12px; }
+}
+
+.sidebar-player__volume {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.sidebar-player__volume input {
+  flex: 1;
+  min-width: 0;
+}
+
+.sidebar-player__link {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+.sidebar-player__link:hover {
+  color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-player--on .sidebar-player__eq i {
+    animation: none;
+    height: 8px;
   }
 }

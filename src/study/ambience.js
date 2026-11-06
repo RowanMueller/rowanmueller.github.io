@@ -14,25 +14,29 @@ export const CHANNELS = [
   { id: 'stream', label: 'Creek', icon: 'stream', volume: 0.4 },
   { id: 'birds', label: 'Songbirds', icon: 'bird', volume: 0.35 },
   { id: 'crickets', label: 'Crickets', icon: 'moon', volume: 0.3 },
-  { id: 'fire', label: 'Campfire', icon: 'fire', volume: 0.45 },
-  { id: 'lofi', label: 'Lofi keys', icon: 'note', volume: 0.35 },
+  { id: 'fire', label: 'Campfire', icon: 'fire', volume: 0.2 },
+  { id: 'lofi', label: 'Lofi keys', icon: 'note', volume: 0.5 },
 ]
 
 export const PRESETS = [
+  { id: 'lofi-fire', label: 'Lofi campfire', on: ['lofi', 'fire'] },
   { id: 'rainy', label: 'Rainy forest', on: ['rain', 'wind', 'lofi'] },
   { id: 'morning', label: 'Morning creek', on: ['stream', 'birds', 'wind'] },
   { id: 'night', label: 'Night camp', on: ['crickets', 'fire', 'lofi'] },
   { id: 'deep', label: 'Deep focus', on: ['rain', 'stream'] },
 ]
 
-const STORAGE_KEY = 'study-ambience-v1'
+const STORAGE_KEY = 'study-ambience-v2'
+
+// What plays the first time someone presses play: lofi keys (medium) + a low campfire
+export const DEFAULT_MIX = ['lofi', 'fire']
 const LOOKAHEAD = 1.5 // seconds scheduled ahead (survives background-tab timer throttling)
 
 function loadSettings() {
   const defaults = {
     master: 0.7,
     channels: Object.fromEntries(
-      CHANNELS.map((c) => [c.id, { on: PRESETS[0].on.includes(c.id), volume: c.volume }]),
+      CHANNELS.map((c) => [c.id, { on: DEFAULT_MIX.includes(c.id), volume: c.volume }]),
     ),
   }
   try {
