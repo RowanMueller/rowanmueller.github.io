@@ -1249,3 +1249,18 @@ a.welcome-action:active {
     transition: none;
   }
 }
+
+/* Screenshot galleries that keep each image's natural shape (no crop) */
+.project-images--natural .pixel-frame {
+  flex: 1 1 280px;
+  max-width: none;
+}
+
+.project-images--natural .pixel-frame--wide {
+  flex-basis: 100%;
+}
+
+.project-images--natural .pixel-frame__inner > img {
+  aspect-ratio: auto;
+  height: auto;
+}

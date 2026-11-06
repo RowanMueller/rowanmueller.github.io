@@ -25,12 +25,21 @@ export default function ProjectDetail() {
 
       <div className="project-detail__content">
         {project.images && project.images.length > 0 && (
-          <div className="project-detail__media project-images">
-            {project.images.map((src, i) => (
-              <PixelFrame key={i} label={mediaLabel(project, 'images', i)} icon="photo">
-                <img src={src} alt={`${project.title} photo ${i + 1}`} className="project-image" />
-              </PixelFrame>
-            ))}
+          <div className={`project-detail__media project-images ${project.imageFit === 'natural' ? 'project-images--natural' : ''}`}>
+            {project.images.map((img, i) => {
+              const src = typeof img === 'string' ? img : img.src
+              const wide = typeof img === 'object' && img.wide
+              return (
+                <PixelFrame
+                  key={i}
+                  label={mediaLabel(project, 'images', i)}
+                  icon="photo"
+                  className={wide ? 'pixel-frame--wide' : ''}
+                >
+                  <img src={src} alt={(typeof img === 'object' && img.alt) || `${project.title} screenshot ${i + 1}`} className="project-image" />
+                </PixelFrame>
+              )
+            })}
           </div>
         )}
         {project.videos && project.videos.length > 0 && project.videos.map((src, i) => (

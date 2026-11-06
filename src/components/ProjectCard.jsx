@@ -6,9 +6,9 @@ export default function ProjectCard({ project, compact }) {
       <h3>{project.title}</h3>
       {!compact && project.images && project.images.length > 0 && (
         <div className="project-images">
-          {project.images.map((src, i) => (
+          {project.images.map((img, i) => (
             <PixelFrame key={i} label={mediaLabel(project, 'images', i)} icon="photo">
-              <img src={src} alt="" className="project-image" />
+              <img src={typeof img === 'string' ? img : img.src} alt="" className="project-image" />
             </PixelFrame>
           ))}
         </div>
