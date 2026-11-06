@@ -1,18 +1,24 @@
 import { Link } from 'react-router-dom'
+import skillsData from '../data/skills.json'
+import PixelFrame from '../components/PixelFrame'
+
+const skillGroups = skillsData.groups || []
 
 export default function About() {
   return (
     <section className="welcome-page">
       <div className="welcome-content">
         <div className="about-header">
-          <img
-            src="/assets/videoClips/ProfilePicture.png"
-            alt="Rowan Mueller"
-            className="about-profile-img"
-          />
+          <PixelFrame variant="portrait" className="about-profile">
+            <img
+              src="/assets/images/profile.jpg"
+              alt="Rowan Mueller"
+              className="about-profile-img"
+            />
+          </PixelFrame>
           <div>
             <h1 className="welcome-title">About</h1>
-            <p className="welcome-subtitle">Rowan Mueller · B.S. Computer Engineering</p>
+            <p className="welcome-subtitle">Rowan Mueller · B.S. Electrical &amp; Computer Engineering · UVA</p>
           </div>
         </div>
 
@@ -31,39 +37,25 @@ export default function About() {
 
         <div className="welcome-section">
           <h2 className="welcome-section__title">Skills</h2>
-          <div className="skill-chips">
-            <span className="welcome-action">HTML</span>
-            <span className="welcome-action">CSS</span>
-            <span className="welcome-action">SQL</span>
-            <span className="welcome-action">JS/TS</span>
-            <span className="welcome-action">React</span>
-            <span className="welcome-action">Python</span>
-            <span className="welcome-action">Java</span>
-            <span className="welcome-action">KiCad</span>
-            <span className="welcome-action">VHDL</span>
-            <span className="welcome-action">AutoDesk Fusion</span>
-            <span className="welcome-action">R</span>
-            <span className="welcome-action">KLayout</span>
-            <span className="welcome-action">Pandas</span>
-            <span className="welcome-action">MATLAB</span>
-            <span className="welcome-action">C/C++</span>
-            <span className="welcome-action">Git</span>
-            <span className="welcome-action">GitHub</span>
-            <span className="welcome-action">Linux</span>
-            <span className="welcome-action">Docker</span>
-            <span className="welcome-action">Vite</span>
-            <span className="welcome-action">Node.js</span>
-            <span className="welcome-action">Django</span>
-            <span className="welcome-action">MongoDB</span>
-            <span className="welcome-action">PostgreSQL</span>
+          <div className="skill-groups">
+            {skillGroups.map((group) => (
+              <div key={group.name} className="skill-group">
+                <h3 className="skill-group__name">{group.name}</h3>
+                <div className="skill-chips">
+                  {group.items.map((item) => (
+                    <span key={item} className="welcome-action">{item}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
         <div className="welcome-section">
           <h2 className="welcome-section__title">More</h2>
           <p className="welcome-section__text">
-            For project details and examples, visit the Projects page or contact me directly.
-            <br />
+            See <Link to="/research">Research</Link> for publications and lab work,{' '}
+            <Link to="/projects">Projects</Link> for builds, or <Link to="/contact">get in touch</Link>.
           </p>
         </div>
       </div>

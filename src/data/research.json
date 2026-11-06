@@ -1,0 +1,59 @@
+{
+  "publications": [
+    {
+      "id": "nonlinear-optics-nanohub",
+      "title": "Nonlinear Optics Data Parsing Web App",
+      "authors": "Rowan Mueller",
+      "venue": "nanoHUB",
+      "year": "2023",
+      "type": "Software / Tool",
+      "doi": "10.21981/N2B5-ZF55",
+      "link": "https://doi.org/10.21981/N2B5-ZF55",
+      "note": "Featured at SPIE Photonics West 2024."
+    }
+  ],
+  "projects": [
+    {
+      "id": "ising-machines",
+      "title": "Coupling Quantization in Oscillator-Based Ising Machines",
+      "org": "UVA Computing Hardware Research Lab",
+      "role": "Undergraduate Research Fellow",
+      "period": "2026 – Present",
+      "status": "ongoing",
+      "summary": "Studying how hardware non-idealities affect oscillator-based Ising machines that solve Max-Cut and other NP-hard problems.",
+      "bullets": [
+        "Developing a C++/Qt simulation and analysis tool to evaluate coupling quantization, hardware mismatch, and optimization performance.",
+        "Built a Monte Carlo framework comparing ideal and quantized coupling matrices across 10,000 trials, cutting analysis time by 22%.",
+        "Assisting with experimental verification of an Ising machine chip for multi-user MIMO (MU-MIMO) detection using oscilloscope measurements and lab test setups."
+      ],
+      "technologies": ["C++", "Qt", "Monte Carlo", "Oscilloscopes"]
+    },
+    {
+      "id": "nonlinear-optics",
+      "title": "Nonlinear Optics Data Parsing",
+      "org": "Nonlinear optics research group",
+      "role": "Developer",
+      "period": "2023",
+      "status": "published",
+      "summary": "A data-parsing web app supporting nonlinear optics research for professors and 80+ students.",
+      "bullets": [
+        "Presented to 100+ students and featured at SPIE Photonics West 2024.",
+        "Published on nanoHUB (DOI: 10.21981/N2B5-ZF55)."
+      ],
+      "technologies": ["Python", "Pandas", "NumPy", "SQL", "JupyterLab"],
+      "link": "https://doi.org/10.21981/N2B5-ZF55"
+    }
+  ],
+  "recognition": [
+    {
+      "title": "US & International Young Physicists' Tournament (USIYPT)",
+      "year": "2024",
+      "detail": "Placed 5th globally for team physics research solutions."
+    },
+    {
+      "title": "IEEE Certification: Chip Fabrication and Nanocharacterization",
+      "year": "2025",
+      "detail": "Virginia Alliance for Semiconductor Technology."
+    }
+  ]
+}

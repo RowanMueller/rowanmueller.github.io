@@ -75,6 +75,26 @@ const ICONS = {
     '..bbbb..',
     '.bbbbbb.',
   ],
+  flask: [
+    '..cccc..',
+    '...cc...',
+    '...cc...',
+    '..cggc..',
+    '.cggggc.',
+    'cgyggygc',
+    'cggggggc',
+    '.cccccc.',
+  ],
+  star: [
+    '...y....',
+    '...y....',
+    '.yyyyy..',
+    '..yyy...',
+    '..y.y...',
+    '.y...y..',
+    '........',
+    '........',
+  ],
   link: [
     '........',
     '.yyy....',
@@ -84,6 +104,40 @@ const ICONS = {
     '...y..y.',
     '....yyy.',
     '........',
+  ],
+  play: [
+    '........',
+    '.yy.....',
+    '.yyyy...',
+    '.yyyyyy.',
+    '.yyyyyy.',
+    '.yyyy...',
+    '.yy.....',
+    '........',
+  ],
+  photo: [
+    'cccccccc',
+    'c......c',
+    'c.y....c',
+    'c....g.c',
+    'c...ggdc',
+    'c.ggdddc',
+    'cddddddc',
+    'cccccccc',
+  ],
+  corner: [
+    'ggggggggd.gg',
+    'gddddddd.gdg',
+    'gd.......gg.',
+    'gd.y........',
+    'gd..........',
+    'gd..........',
+    'gd..........',
+    'gd..........',
+    'd...........',
+    '............',
+    'gg..........',
+    'gdg.........',
   ],
 }
 
@@ -102,7 +156,7 @@ export default function PixelIcon({ name, size = 16, className = '' }) {
       className={`pixel-icon ${className}`}
       width={size}
       height={size}
-      viewBox="0 0 8 8"
+      viewBox={`0 0 ${rows[0].length} ${rows.length}`}
       shapeRendering="crispEdges"
       aria-hidden="true"
     >

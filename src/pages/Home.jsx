@@ -66,7 +66,7 @@ export default function Home() {
         >
           {WELCOME_TEXT.split('').map((char, i) => <span key={i} ref={(el) => { charRefs.current[i] = el }} className={`welcome-title__char ${jumpingIndex === i ? 'welcome-title__char--jump' : ''}`}>{char}</span>)}
         </h1>
-        <p className="welcome-subtitle">Rowan Mueller · B.S. Computer Engineering</p>
+        <p className="welcome-subtitle">Rowan Mueller · B.S. Electrical &amp; Computer Engineering · UVA</p>
 
         <div className="welcome-section">
           <h2 className="welcome-section__title">Start</h2>
@@ -74,6 +74,10 @@ export default function Home() {
             <Link to="/projects" className="welcome-action">
               <span className="welcome-action__icon"><PixelIcon name="folder" /></span>
               <span>Open Projects</span>
+            </Link>
+            <Link to="/research" className="welcome-action">
+              <span className="welcome-action__icon"><PixelIcon name="flask" /></span>
+              <span>Research</span>
             </Link>
             <Link to="/about" className="welcome-action">
               <span className="welcome-action__icon"><PixelIcon name="scroll" /></span>

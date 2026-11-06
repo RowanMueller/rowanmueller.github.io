@@ -5,7 +5,7 @@ export default function Contact() {
     <section className="welcome-page">
       <div className="welcome-content">
         <h1 className="welcome-title">Contact</h1>
-        <p className="welcome-subtitle">Rowan Mueller · B.S. Computer Engineering</p>
+        <p className="welcome-subtitle">Rowan Mueller · B.S. Electrical &amp; Computer Engineering · UVA</p>
 
         <div className="welcome-section">
           <h2 className="welcome-section__title">Contact Me</h2>

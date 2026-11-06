@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
 import About from './pages/About'
+import Research from './pages/Research'
 import Contact from './pages/Contact'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
   const getPageTitle = () => {
     if (location.pathname === '/projects') return 'Projects'
     if (location.pathname.startsWith('/projects/')) return 'Project'
+    if (location.pathname === '/research') return 'Research'
     if (location.pathname === '/about') return 'About'
     if (location.pathname === '/contact') return 'Contact'
     return 'rowanmueller.github.io'
@@ -41,6 +43,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:id" element={<ProjectDetail />} />
+            <Route path="/research" element={<Research />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
