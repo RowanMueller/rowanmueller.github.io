@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import projectsData from '../data/projects.json'
 import PixelIcon from './PixelIcon'
+import SidebarPlayer from './SidebarPlayer'
 
 const FILES = [
   { to: '/', icon: 'leaf', label: 'index.html' },
@@ -83,6 +84,8 @@ export default function Navbar() {
           </li>
         </ul>
       </nav>
+
+      <SidebarPlayer />
     </aside>
   )
 }
