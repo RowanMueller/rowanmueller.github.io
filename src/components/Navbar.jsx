@@ -1,163 +1,88 @@
 import { Link, useLocation } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import projectsData from '../data/projects.json'
-import SidebarGitHubActivity from './SidebarGitHubActivity'
-import { useState, useRef, useEffect } from 'react'
 import PixelIcon from './PixelIcon'
 
-const DROPDOWN_CLOSE_DELAY = 600
+const FILES = [
+  { to: '/', icon: 'leaf', label: 'index.html' },
+  { to: '/research', icon: 'flask', label: 'research.bib' },
+  { to: '/study', icon: 'sprout', label: 'study-with-me.sh' },
+  { to: '/about', icon: 'scroll', label: 'about.md' },
+  { to: '/contact', icon: 'letter', label: 'contact.json' },
+]
 
 export default function Navbar() {
   const location = useLocation()
   const projects = projectsData.projects || []
-  const [projectsHovered, setProjectsHovered] = useState(false)
-  const closeTimeoutRef = useRef(null)
+  const isProjectsRoute = location.pathname === '/projects' || location.pathname.startsWith('/projects/')
+  const [open, setOpen] = useState(isProjectsRoute)
 
-  const isProjectsActive = location.pathname === '/projects' || location.pathname.startsWith('/projects/')
-
-  const handleFolderToggle = () => {
-    setProjectsHovered((prev) => !prev)
-  }
-
-  const handleProjectsMouseEnter = () => {
-    if (closeTimeoutRef.current) {
-      clearTimeout(closeTimeoutRef.current)
-      closeTimeoutRef.current = null
-    }
-    setProjectsHovered(true)
-  }
-
-  const handleProjectsMouseLeave = () => {
-    closeTimeoutRef.current = setTimeout(() => {
-      setProjectsHovered(false)
-      closeTimeoutRef.current = null
-    }, DROPDOWN_CLOSE_DELAY)
-  }
-
-  const cancelCloseTimeout = () => {
-    if (closeTimeoutRef.current) {
-      clearTimeout(closeTimeoutRef.current)
-      closeTimeoutRef.current = null
-    }
-  }
-
+  // Open the folder when arriving on a project page; otherwise leave it as the visitor set it
   useEffect(() => {
-    setProjectsHovered(false)
-  }, [location.pathname])
+    if (isProjectsRoute) setOpen(true)
+  }, [isProjectsRoute])
 
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
         <span className="sidebar-title"><PixelIcon name="sprout" size={12} />ROOT</span>
-          <span className="sidebar-subtitle">rowanmueller.github.io</span>
-        </div>
-      <nav className="sidebar-nav">
+        <span className="sidebar-subtitle">rowanmueller.github.io</span>
+      </div>
+      <nav className="sidebar-nav" aria-label="Site">
         <ul className="sidebar-list">
-          <li className="sidebar-item">
-            <Link
-              to="/"
-              className={`sidebar-link ${location.pathname === '/' ? 'sidebar-link--active' : ''}`}
-            >
-              <span className="sidebar-link-icon"><PixelIcon name="leaf" /></span>
-              <span className="sidebar-link-label">index.html</span>
-            </Link>
-          </li>
+          {FILES.map((f) => (
+            <li key={f.to} className="sidebar-item">
+              <Link
+                to={f.to}
+                className={`sidebar-link ${location.pathname === f.to ? 'sidebar-link--active' : ''}`}
+                aria-current={location.pathname === f.to ? 'page' : undefined}
+              >
+                <span className="sidebar-link-icon"><PixelIcon name={f.icon} /></span>
+                <span className="sidebar-link-label">{f.label}</span>
+              </Link>
+            </li>
+          ))}
 
-          <li
-            className="sidebar-item sidebar-item--folder"
-            onMouseEnter={handleProjectsMouseEnter}
-            onMouseLeave={handleProjectsMouseLeave}
-          >
-            <Link
-              to="/projects"
-              className={`sidebar-link sidebar-link--folder ${isProjectsActive ? 'sidebar-link--active' : ''}`}
-              onClick={(e) => {
-                if (window.innerWidth <= 860) {
-                  e.preventDefault()
-                  handleFolderToggle()
-                }
-              }}
+          {/* Last in the list, so expanding it never pushes other items around */}
+          <li className="sidebar-item sidebar-item--folder">
+            <button
+              type="button"
+              className={`sidebar-link sidebar-link--folder ${isProjectsRoute ? 'sidebar-link--active' : ''}`}
+              aria-expanded={open}
+              aria-controls="sidebar-projects"
+              onClick={() => setOpen((v) => !v)}
             >
               <span className="sidebar-link-icon"><PixelIcon name="folder" /></span>
-              <span className="sidebar-link-label">projects</span>
-              <span className="sidebar-link-chevron">{projectsHovered ? '▼' : '▶'}</span>
-            </Link>
-            <ul className={`sidebar-sublist ${projectsHovered ? 'sidebar-sublist--open' : ''}`}>
-                <li className="sidebar-subitem">
-                  <Link
-                    to="/projects"
-                    className={`sidebar-sublink ${location.pathname === '/projects' ? 'sidebar-sublink--active' : ''}`}
-                  >
-                    All Projects
-                  </Link>
-                </li>
-                {projects.map((project) => (
+              <span className="sidebar-link-label">projects/</span>
+              <span className="sidebar-link-chevron" aria-hidden="true">{open ? '▼' : '▶'}</span>
+            </button>
+            <ul id="sidebar-projects" className={`sidebar-sublist ${open ? 'sidebar-sublist--open' : ''}`} hidden={!open}>
+              <li className="sidebar-subitem">
+                <Link
+                  to="/projects"
+                  className={`sidebar-sublink ${location.pathname === '/projects' ? 'sidebar-sublink--active' : ''}`}
+                >
+                  All projects
+                </Link>
+              </li>
+              {projects.map((project) => {
+                const to = `/projects/${project.id}`
+                return (
                   <li key={project.id} className="sidebar-subitem">
                     <Link
-                      to={`/projects/${project.id}`}
-                      className={`sidebar-sublink ${location.pathname === `/projects/${project.id}` ? 'sidebar-sublink--active' : ''}`}
+                      to={to}
+                      className={`sidebar-sublink ${location.pathname === to ? 'sidebar-sublink--active' : ''}`}
+                      aria-current={location.pathname === to ? 'page' : undefined}
                     >
                       {project.title}
                     </Link>
                   </li>
-                ))}
-              </ul>
-          </li>
-
-          <li
-            className="sidebar-item"
-            onMouseEnter={cancelCloseTimeout}
-          >
-            <Link
-              to="/research"
-              className={`sidebar-link ${location.pathname === '/research' ? 'sidebar-link--active' : ''}`}
-            >
-              <span className="sidebar-link-icon"><PixelIcon name="flask" /></span>
-              <span className="sidebar-link-label">research.bib</span>
-            </Link>
-          </li>
-
-          <li
-            className="sidebar-item"
-            onMouseEnter={cancelCloseTimeout}
-          >
-            <Link
-              to="/study"
-              className={`sidebar-link ${location.pathname === '/study' ? 'sidebar-link--active' : ''}`}
-            >
-              <span className="sidebar-link-icon"><PixelIcon name="sprout" /></span>
-              <span className="sidebar-link-label">study-with-me.sh</span>
-            </Link>
-          </li>
-
-          <li
-            className="sidebar-item"
-            onMouseEnter={cancelCloseTimeout}
-          >
-            <Link
-              to="/about"
-              className={`sidebar-link ${location.pathname === '/about' ? 'sidebar-link--active' : ''}`}
-            >
-              <span className="sidebar-link-icon"><PixelIcon name="scroll" /></span>
-              <span className="sidebar-link-label">about.md</span>
-            </Link>
-          </li>
-
-          <li
-            className="sidebar-item"
-            onMouseEnter={cancelCloseTimeout}
-          >
-            <Link
-              to="/contact"
-              className={`sidebar-link ${location.pathname === '/contact' ? 'sidebar-link--active' : ''}`}
-            >
-              <span className="sidebar-link-icon"><PixelIcon name="letter" /></span>
-              <span className="sidebar-link-label">contact.json</span>
-            </Link>
+                )
+              })}
+            </ul>
           </li>
         </ul>
       </nav>
-
-      <SidebarGitHubActivity />
     </aside>
   )
 }
