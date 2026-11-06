@@ -1,6 +1,7 @@
 import { useState, useRef, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import projectsData from '../data/projects.json'
+import PixelIcon from '../components/PixelIcon'
 
 const WELCOME_TEXT = 'Welcome!'
 const PROXIMITY_PX = 5
@@ -71,15 +72,15 @@ export default function Home() {
           <h2 className="welcome-section__title">Start</h2>
           <div className="welcome-actions">
             <Link to="/projects" className="welcome-action">
-              <span className="welcome-action__icon">📁</span>
+              <span className="welcome-action__icon"><PixelIcon name="folder" /></span>
               <span>Open Projects</span>
             </Link>
             <Link to="/about" className="welcome-action">
-              <span className="welcome-action__icon">📄</span>
+              <span className="welcome-action__icon"><PixelIcon name="scroll" /></span>
               <span>About</span>
             </Link>
             <Link to="/contact" className="welcome-action">
-              <span className="welcome-action__icon">✉️</span>
+              <span className="welcome-action__icon"><PixelIcon name="letter" /></span>
               <span>Contact</span>
             </Link>
           </div>
@@ -91,7 +92,7 @@ export default function Home() {
             {projects.slice(0, 5).map((project) => (
               <li key={project.id}>
                 <Link to={`/projects/${project.id}`} className="welcome-recent__link">
-                  <span className="welcome-recent__icon">📄</span>
+                  <span className="welcome-recent__icon"><PixelIcon name="mushroom" size={14} /></span>
                   <span>{project.title}</span>
                 </Link>
               </li>

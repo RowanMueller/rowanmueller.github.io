@@ -1,6 +1,7 @@
 import { Routes, Route, useLocation, Link } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import ForestBackground from './components/ForestBackground'
 import Home from './pages/Home'
 import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
@@ -20,6 +21,8 @@ function App() {
   }
 
   return (
+    <>
+    <ForestBackground />
     <div className={`app-layout ${isHome ? 'route-home' : 'route-content'}`}>
       <header className="mobile-header">
         {!isHome ? (
@@ -45,6 +48,7 @@ function App() {
         <Footer />
       </div>
     </div>
+    </>
   )
 }
 
