@@ -12,6 +12,7 @@ const PALETTE = {
   c: '#e8e4c9', // cream
   m: '#9bab8a', // moss grey
   r: '#c8553d', // mushroom red
+  w: '#8ecae6', // water blue
 }
 
 const ICONS = {
@@ -124,6 +125,76 @@ const ICONS = {
     'c.ggdddc',
     'cddddddc',
     'cccccccc',
+  ],
+  rain: [
+    '..ccc...',
+    '.cccccc.',
+    'cccccccc',
+    '.cccccc.',
+    '........',
+    '.w..w..w',
+    'w..w..w.',
+    '........',
+  ],
+  stream: [
+    '........',
+    'ww..ww..',
+    '.wwww.ww',
+    '........',
+    '..ww..ww',
+    'ww.wwww.',
+    '........',
+    '........',
+  ],
+  bird: [
+    '........',
+    '.mm.....',
+    'mmmm..o.',
+    '.mmmmmoo',
+    '..mmmmm.',
+    '...mm...',
+    '...o.o..',
+    '........',
+  ],
+  moon: [
+    '..yyy...',
+    '.yy.....',
+    'yy......',
+    'yy....y.',
+    'yy......',
+    '.yy.....',
+    '..yyyy..',
+    '........',
+  ],
+  fire: [
+    '...r....',
+    '..rr.r..',
+    '..ryrr..',
+    '.rryyr..',
+    '.ryyyrr.',
+    '.ryyyyr.',
+    '..bbbb..',
+    '.b....b.',
+  ],
+  note: [
+    '....cc..',
+    '....c.c.',
+    '....c..c',
+    '....c...',
+    '..ccc...',
+    '.cccc...',
+    '.ccc....',
+    '........',
+  ],
+  pause: [
+    '........',
+    '.yy..yy.',
+    '.yy..yy.',
+    '.yy..yy.',
+    '.yy..yy.',
+    '.yy..yy.',
+    '.yy..yy.',
+    '........',
   ],
   corner: [
     'ggggggggd.gg',

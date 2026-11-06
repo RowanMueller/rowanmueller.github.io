@@ -7,6 +7,7 @@ import Projects from './pages/Projects'
 import ProjectDetail from './pages/ProjectDetail'
 import About from './pages/About'
 import Research from './pages/Research'
+import Study from './pages/Study'
 import Contact from './pages/Contact'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
     if (location.pathname === '/projects') return 'Projects'
     if (location.pathname.startsWith('/projects/')) return 'Project'
     if (location.pathname === '/research') return 'Research'
+    if (location.pathname === '/study') return 'Study with me'
     if (location.pathname === '/about') return 'About'
     if (location.pathname === '/contact') return 'Contact'
     return 'rowanmueller.github.io'
@@ -44,6 +46,7 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/:id" element={<ProjectDetail />} />
             <Route path="/research" element={<Research />} />
+            <Route path="/study" element={<Study />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
